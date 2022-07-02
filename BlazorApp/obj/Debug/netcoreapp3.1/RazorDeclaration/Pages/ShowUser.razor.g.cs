@@ -75,65 +75,13 @@ using BlazorApp.Shared;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 3 "D:\4.learn\BlazorApp\BlazorApp\Pages\User.razor"
-using BlazorApp.Data;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/user")]
-    public partial class User : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class ShowUser : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 37 "D:\4.learn\BlazorApp\BlazorApp\Pages\User.razor"
-           
-
-        List<UserData> _users = new List<UserData>();
-
-        string _inputName;
-        string _btnClass = "btn btn-primary";
-
-        protected override void OnInitialized()
-        {
-            _users.Add(new UserData() { Name = "Rookiss" });
-            _users.Add(new UserData() { Name = "Faket" });
-            _users.Add(new UserData() { Name = "Deft" });
-            RefreshButton();
-        }
-
-        void AddUser()
-        {
-            _users.Add(new UserData() { Name = _inputName });
-            _inputName = "";
-            RefreshButton();
-        }
-
-        void KickUser(UserData user)
-        {
-            _users.Remove(user);
-            RefreshButton();
-        }
-
-        void RefreshButton()
-        {
-            if(_users.Count % 2 ==0)
-                _btnClass = "btn btn-primary";
-            else
-                _btnClass = "btn btn-secondary";
-        }
-
-
-    
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591
