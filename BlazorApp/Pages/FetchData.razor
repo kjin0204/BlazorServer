@@ -13,27 +13,24 @@
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <!--Titem은 안넘겨줘도 되지만 자동으로 못잡는경우가 있어 타입을 넘겨줌.-->
+<TableTemplate Items="forecasts" Titem="WeatherForecast">
+
+    <Header>
+        <th>Date</th>
+        <th>Temp. (C)</th>
+        <th>Temp. (F)</th>
+        <th>Summary</th>
+    </Header>
+
+    <Row Context="forecast">
+        <td>@forecast.Date.ToShortDateString()</td>
+        <td>@forecast.TemperatureC</td>
+        <td>@forecast.TemperatureF</td>
+        <td>@forecast.Summary</td>
+    </Row>
+
+</TableTemplate>
 }
 
 @code {

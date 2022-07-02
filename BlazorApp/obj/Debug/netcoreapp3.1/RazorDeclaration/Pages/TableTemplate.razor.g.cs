@@ -75,15 +75,7 @@ using BlazorApp.Shared;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 3 "D:\4.learn\BlazorApp\BlazorApp\Pages\FetchData.razor"
-using BlazorApp.Data;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/fetchdata")]
-    public partial class FetchData : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class TableTemplate<Titem> : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -91,19 +83,22 @@ using BlazorApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 58 "D:\4.learn\BlazorApp\BlazorApp\Pages\FetchData.razor"
+#line 24 "D:\4.learn\BlazorApp\BlazorApp\Pages\TableTemplate.razor"
        
-    private WeatherForecast[] forecasts;
+    [Parameter]
+    public RenderFragment Header { get; set; } //HTML의 집합?
 
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-    }
+    [Parameter]
+    public RenderFragment<Titem> Row { get; set; } //HTML의 집합?
+
+
+    //IReadOnlyList ?인덱스로 접근가능한 리스트 , 배열이나 list도 이걸 상속받아서 만들어짐
+    [Parameter]
+    public IReadOnlyList<Titem> Items { get; set; }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private WeatherForecastService ForecastService { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -1,0 +1,35 @@
+﻿<h3>TableTemplate</h3>
+
+<!--제네릭같은 느낌 List<T>에서 T와 같은 역활-->
+@typeparam Titem
+
+<table class="table">
+    <thead>
+        <tr>
+            @Header
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Items)
+        {
+        <tr>
+            @Row(item)
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@code {
+    [Parameter]
+    public RenderFragment Header { get; set; } //HTML의 집합?
+
+    [Parameter]
+    public RenderFragment<Titem> Row { get; set; } //HTML의 집합?
+
+
+    //IReadOnlyList ?인덱스로 접근가능한 리스트 , 배열이나 list도 이걸 상속받아서 만들어짐
+    [Parameter]
+    public IReadOnlyList<Titem> Items { get; set; }
+}

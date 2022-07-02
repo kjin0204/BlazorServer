@@ -112,3 +112,5 @@ D:\4.learn\BlazorApp\BlazorApp\obj\Debug\netcoreapp3.1\BlazorApp.genruntimeconfi
 D:\4.learn\BlazorApp\BlazorApp\obj\Debug\netcoreapp3.1\BlazorApp.csproj.CopyComplete
 D:\4.learn\BlazorApp\BlazorApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ShowUser.razor.g.cs
 D:\4.learn\BlazorApp\BlazorApp\obj\Debug\netcoreapp3.1\Razor\Pages\ShowUser.razor.g.cs
+D:\4.learn\BlazorApp\BlazorApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\TableTemplate.razor.g.cs
+D:\4.learn\BlazorApp\BlazorApp\obj\Debug\netcoreapp3.1\Razor\Pages\TableTemplate.razor.g.cs

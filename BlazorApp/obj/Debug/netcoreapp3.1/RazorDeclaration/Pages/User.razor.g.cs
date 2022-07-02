@@ -91,7 +91,7 @@ using BlazorApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "D:\4.learn\BlazorApp\BlazorApp\Pages\User.razor"
+#line 38 "D:\4.learn\BlazorApp\BlazorApp\Pages\User.razor"
        
     string _selectedColor = "Green";
     List<string> _options = new List<string>() { "Green", "Red", "blue" };
@@ -101,12 +101,6 @@ using BlazorApp.Data;
 
     string _inputName;
     string _btnClass = "btn btn-primary";
-
-    int count = 0;
-    void test()
-    {
-        _inputName = (++count).ToString();
-    }
 
     void AddUser()
     {
