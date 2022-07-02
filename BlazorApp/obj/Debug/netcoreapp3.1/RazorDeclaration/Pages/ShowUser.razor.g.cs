@@ -92,6 +92,9 @@ using BlazorApp.Data;
 #nullable restore
 #line 20 "D:\4.learn\BlazorApp\BlazorApp\Pages\ShowUser.razor"
        
+    [CascadingParameter(Name = "themsColor")]
+    string _color { get; set; }
+
     [Parameter]
     public List<UserData> Users { get; set; }
 

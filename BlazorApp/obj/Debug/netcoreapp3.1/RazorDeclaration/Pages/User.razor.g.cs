@@ -91,27 +91,34 @@ using BlazorApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 24 "D:\4.learn\BlazorApp\BlazorApp\Pages\User.razor"
-           
+#line 50 "D:\4.learn\BlazorApp\BlazorApp\Pages\User.razor"
+       
+    string _selectedColor = "Green";
+    List<string> _options = new List<string>() { "Green", "Red", "blue" };
 
-        List<UserData> _users = new List<UserData>();
-        ShowUser _showUser;
+    List<UserData> _users = new List<UserData>();
+    ShowUser _showUser;
 
-        string _inputName;
-        string _btnClass = "btn btn-primary";
+    string _inputName;
+    string _btnClass = "btn btn-primary";
 
-        void AddUser()
-        {
+    int count = 0;
+    void test()
+    {
+        _inputName = (++count).ToString();
+    }
 
-            _users.Add(new UserData() { Name = _inputName });
-        }
+    void AddUser()
+    {
 
-        void CallbackTest()
-        {
-            _inputName = "CallbackTest";
-        }
+        _users.Add(new UserData() { Name = _inputName });
+    }
 
-    
+    void CallbackTest()
+    {
+        _inputName = "CallbackTest";
+    }
+
 
 #line default
 #line hidden

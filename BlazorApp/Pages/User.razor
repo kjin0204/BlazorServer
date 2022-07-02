@@ -4,40 +4,56 @@
 
 <h3>Online users</h3>
 
-<ShowUser Users="@_users" CallBackTest="CallbackTest" ></ShowUser>
+<label>Theme Color:</label>
+<select class="form-control" @bind="_selectedColor">
 
-    <br />
+    @foreach (var option in _options)
+    {
+        <option value="@option">
+            @option
+        </option>
+    }
+</select>
+
+<CascadingValue Name="themsColor" Value="_selectedColor">
+    <ShowUser Users="@_users" CallBackTest="CallbackTest"></ShowUser>
+</CascadingValue>
+<br />
 
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <input class="form-control" placeholder="Add User" @bind-value="@_inputName" />
-            </div>
-            <div class="col">
-                <!--disabled 버튼 비활성화 기능-->
-                <button class="@_btnClass" type="button" @onclick="AddUser" disabled="@(_users.Count >= 5)">Add a User</button>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <input class="form-control" placeholder="Add User" @bind-value="@_inputName" />
+        </div>
+        <div class="col">
+            <!--disabled 버튼 비활성화 기능-->
+            <button class="@_btnClass" type="button" @onclick="AddUser" disabled="@(_users.Count >= 5)">Add a User</button>
         </div>
     </div>
+</div>
 
-    @code {
 
-        List<UserData> _users = new List<UserData>();
-        ShowUser _showUser;
 
-        string _inputName;
-        string _btnClass = "btn btn-primary";
+@code {
+    string _selectedColor = "Green";
+    List<string> _options = new List<string>() { "Green", "Red", "blue" };
 
-        void AddUser()
-        {
+    List<UserData> _users = new List<UserData>();
+    ShowUser _showUser;
 
-            _users.Add(new UserData() { Name = _inputName });
-        }
+    string _inputName;
+    string _btnClass = "btn btn-primary";
 
-        void CallbackTest()
-        {
-            _inputName = "CallbackTest";
-        }
+    void AddUser()
+    {
 
+        _users.Add(new UserData() { Name = _inputName });
     }
+
+    void CallbackTest()
+    {
+        _inputName = "CallbackTest";
+    }
+
+}
