@@ -77,7 +77,7 @@ using BlazorStudy.Shared;
 #nullable disable
     [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(MainLayout2))]
     [Microsoft.AspNetCore.Components.RouteAttribute("/counter")]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/counter/{currentCount1:int}")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/counter/{currentCount:int}")]
     public partial class Counter : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

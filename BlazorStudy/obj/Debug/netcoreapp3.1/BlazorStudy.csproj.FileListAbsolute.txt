@@ -53,3 +53,4 @@ D:\4.learn\BlazorApp\BlazorStudy\obj\Debug\netcoreapp3.1\BlazorStudy.genruntimec
 D:\4.learn\BlazorApp\BlazorStudy\obj\Debug\netcoreapp3.1\BlazorStudy.csproj.CopyComplete
 D:\4.learn\BlazorApp\BlazorStudy\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\_Imports.razor.g.cs
 D:\4.learn\BlazorApp\BlazorStudy\obj\Debug\netcoreapp3.1\Razor\Pages\_Imports.razor.g.cs
+D:\4.learn\BlazorApp\BlazorStudy\obj\Debug\netcoreapp3.1\BlazorStudy.csproj.AssemblyReference.cache

@@ -7,37 +7,91 @@
 
 <p>This component demonstrates fetching data from a service.</p>
 
-@if (forecasts == null)
+@if (_forecasts == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
     <!--Titem은 안넘겨줘도 되지만 자동으로 못잡는경우가 있어 타입을 넘겨줌.-->
-<TableTemplate Items="forecasts" Titem="WeatherForecast">
+    <TableTemplate Items="_forecasts" Titem="WeatherForecast">
 
-    <Header>
+        <Header>
         <th>Date</th>
         <th>Temp. (C)</th>
         <th>Temp. (F)</th>
         <th>Summary</th>
-    </Header>
+        </Header>
 
-    <Row Context="forecast">
-        <td>@forecast.Date.ToShortDateString()</td>
-        <td>@forecast.TemperatureC</td>
-        <td>@forecast.TemperatureF</td>
-        <td>@forecast.Summary</td>
-    </Row>
+        <Row Context="forecast">
+            <td>@forecast.Date.ToShortDateString()</td>
+            <td>@forecast.TemperatureC</td>
+            <td>@forecast.TemperatureF</td>
+            <td>@forecast.Summary</td>
+        </Row>
+    </TableTemplate>
 
-</TableTemplate>
+    <button class="btn btn-primary" @onclick="AddNewForecasst">
+        Add New Forecast
+    </button>
+
+    if (_showPopup)
+    {
+        <div class="modal" style="display:block" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" @onclick="ClosePopup">
+                            <span area-hidden="true">X</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <EditForm Model="_addForecast" OnValidSubmit="SaveForecast">
+                            @*form validation 기능 ON*@
+                            <DataAnnotationsValidator />
+                            @*에러가 있으면 메시지 상세 출력*@
+                            <ValidationSummary />
+                            <label for="TemperatureC">TemperatureC</label>
+                            <InputNumber id="TemperatureC" class="form-control" placeholder="TemperatureC" @bind-Value="_addForecast.TemperatureC" />
+                            <label for="Summary">TemperatureC</label>
+                            <InputText id ="Summary" class="form-control" placeholder="Summary" @bind-Value="_addForecast.Summary" />
+                            <br />
+                            <button class="btn btn-primary" type="submit">Save</button>
+
+                        </EditForm>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 }
 
 @code {
-    private WeatherForecast[] forecasts;
+    private List<WeatherForecast> _forecasts;
+
+    bool _showPopup = false;
+    WeatherForecast _addForecast;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        _forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+
+    void AddNewForecasst()
+    {
+        _showPopup = true;
+        _addForecast = new WeatherForecast();
+    }
+
+    void SaveForecast()
+    {
+        _showPopup = false;
+        _addForecast.Date = DateTime.Now;
+        _forecasts.Add(_addForecast);
+    }
+
+    void ClosePopup()
+    {
+        _showPopup = false;
     }
 }
