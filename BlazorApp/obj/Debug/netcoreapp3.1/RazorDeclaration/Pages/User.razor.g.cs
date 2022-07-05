@@ -97,7 +97,7 @@ using BlazorApp.Data;
     List<string> _options = new List<string>() { "Green", "Red", "blue" };
 
     List<UserData> _users = new List<UserData>();
-    ShowUser _showUser;
+    //ShowUser _showUser;
 
     string _inputName;
     string _btnClass = "btn btn-primary";

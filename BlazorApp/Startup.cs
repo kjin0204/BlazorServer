@@ -29,6 +29,17 @@ namespace BlazorApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+
+            //의존성 주입(value1 인터페이스, value 2 클래스)
+            services.AddSingleton<IFoodService, FastFoodService>();
+
+            //생성자에서 알아서 연결
+            services.AddSingleton<PaymentService>();
+
+            //3가지 옵션
+            services.AddSingleton<SingletonService>(); //singleton으로 생성
+            services.AddTransient<TransientService>(); //페이지 이동할때마다 새로 생성됨?
+            services.AddScoped<ScopedService>(); //페이지 새로고침 하면 새로 생성됨?
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

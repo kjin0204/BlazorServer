@@ -104,9 +104,9 @@ using BlazorApp.Data;
 
     protected override void OnInitialized()
     {
-        Users.Add(new UserData() { Name = "Rookiss" });
-        Users.Add(new UserData() { Name = "Faket" });
-        Users.Add(new UserData() { Name = "Deft" });
+        Users.Add(new UserData() { Name = "강아지" });
+        Users.Add(new UserData() { Name = "고양이" });
+        Users.Add(new UserData() { Name = "호랑이" });
     }
 
     void AddUser(UserData user)
