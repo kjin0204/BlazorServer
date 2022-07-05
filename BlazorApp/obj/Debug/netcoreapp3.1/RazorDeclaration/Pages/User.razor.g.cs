@@ -93,7 +93,7 @@ using BlazorApp.Data;
 #nullable restore
 #line 38 "D:\4.learn\BlazorApp\BlazorApp\Pages\User.razor"
        
-    string _selectedColor = "Green";
+    string _selectedColor = "Red";
     List<string> _options = new List<string>() { "Green", "Red", "blue" };
 
     List<UserData> _users = new List<UserData>();

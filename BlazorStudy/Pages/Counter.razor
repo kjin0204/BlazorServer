@@ -1,0 +1,23 @@
+﻿@page "/counter"
+@page "/counter/{currentCount:int}"
+    <!--string 일 경우는 dataType을 입력 하지 않아도 됨-->
+@inject NavigationManager navManager;
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    //private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+
+        navManager.NavigateTo("FetchData");
+    }
+
+    [Parameter]
+    public int currentCount { get; set; }
+}
