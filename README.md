@@ -67,3 +67,30 @@
     2) _Host.cshtml에서 사용할 자바 스크립트 추가 test.js(<script src="test.js"></script> 줄 추가)
     3) JSInterop.razor 추가 javascript에서 함수 호출 기능 테스트(반환값 없는 함수, 반환값 이있고 매개변수를 받는 함수)
         JavaScript를 사용 하려면 IJSRuntime을 주입 해 줘야 함.
+
+5. Blazor RankingApp#1
+    1) ApplicationDbContext.cs : entity 프레임워크 ORM (자동으로 DB와연동 테이블 생성, CRUD기능)
+    2) StartUp 에서  기능 추가
+        services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("DefaultConnection")));
+        DefaultConnection => appsettings.json 에 정의 되어 있으며 DB 접속정보를 가지고 옴.
+    3) Migrations에 테이블 생성및 쿼리 생성관련 데이터가 생성됨
+    4) 프로젝트 새로 생성시 인증 선택을 하면 인증 관련된 설정들이 자동 생성 됨
+
+6. Blazor RankingApp#2
+    1) GameResult.cs Model 생성
+    2) ApplicationDbContext.cs 에서 DB와 연결할 모델 설정
+        public DbSet<GameResult> GameResults { get; set; } // 해당 부분 추가 해 주면 테이블 생성 및 모델과 DB객체간 자동 연결
+    3) Nuget 패키지 관리자를 열어 add-migration RankingServic(RankingService는마이그레이션에      
+        추가될 cs 파일의이름)
+        ApplicationDbContext 모델들을 마이그레이션 파일로 생성함.
+        -예) 4.0 버전에는 A 모델, B 모델이 있었고  3.0에는 A모델만 있었다고 가정 할때
+             3.0 버전으로 낮추게 되면 디비에서 B모델에 대한 테이블 삭제도 자동 처리됨
+    4) update-database add-migration에 추가한 정보를 토대로 DB에 최신화 함
+    5) RankingService.cs 생성 하여 생성자를 생성해 Entity 모델을 디펜던시를 이용해 주입 받고
+        DB에서 데이터를 가지고 오는 Read 메소드 생성, StatUp에서 디펜던시 추가
+    6) Ranking.razor UI파일 생성 디비 데이터 UI로 표시
+
+
+
