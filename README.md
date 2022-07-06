@@ -61,3 +61,9 @@
     3) CounterState.cs에서 카운트 값을 set 할때 UI 갱신하는 Action을 추가하여 UI 갱신
     4) @impelements 상속 기능 count페이지에 추가 함
     5) StartUp.cs에서 의존성 주입
+
+4. javascript 연동
+    1) wwwrot에 test.js 추가
+    2) _Host.cshtml에서 사용할 자바 스크립트 추가 test.js(<script src="test.js"></script> 줄 추가)
+    3) JSInterop.razor 추가 javascript에서 함수 호출 기능 테스트(반환값 없는 함수, 반환값 이있고 매개변수를 받는 함수)
+        JavaScript를 사용 하려면 IJSRuntime을 주입 해 줘야 함.

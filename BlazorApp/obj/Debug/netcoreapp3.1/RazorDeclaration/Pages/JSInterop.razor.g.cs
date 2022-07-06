@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace BlazorApp.Shared
+namespace BlazorApp.Pages
 {
     #line hidden
     using System;
@@ -75,7 +75,8 @@ using BlazorApp.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase, IDisposable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/JSInterop")]
+    public partial class JSInterop : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -83,36 +84,24 @@ using BlazorApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "D:\4.learn\BlazorApp\BlazorApp\Shared\NavMenu.razor"
+#line 26 "D:\4.learn\BlazorApp\BlazorApp\Pages\JSInterop.razor"
        
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    public async void HelloWorld()
     {
-        collapseNavMenu = !collapseNavMenu;
+        await JSRuntime.InvokeVoidAsync("testFunction.helloWorld", null); //반환값이 없는
     }
 
-    protected override void OnInitialized()
+    string _name = "";
+    public async void InputName()
     {
-        CounteState.OnStateChanged += onStatechanged;
-    }
-
-    void onStatechanged()
-    {
-        this.StateHasChanged(); //UI갱신
-    }
-
-    void IDisposable.Dispose()
-    {
-        CounteState.OnStateChanged -= onStatechanged; //창이 종료될때 Action 연결 끊음
+        _name = await JSRuntime.InvokeAsync<string>("testFunction.inputName", "Input name"); //반환값이 dlTsms
+        StateHasChanged(); //UI 갱신
     }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private BlazorApp.Data.CounterState CounteState { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JSRuntime { get; set; }
     }
 }
 #pragma warning restore 1591

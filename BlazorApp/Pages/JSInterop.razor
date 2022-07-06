@@ -1,0 +1,38 @@
+﻿@page "/JSInterop"
+@inject IJSRuntime JSRuntime
+    <!--JavaScript 사용을 위해 자바 스크립트 런타임을 주입-->
+
+<h3>JSInterop</h3>
+
+
+<div>
+    <button type="button" class="btn btn-primary" @onclick="HelloWorld">
+        Hellow World
+    </button>
+
+</div>
+<br />
+
+
+<div>
+    <button type="button" class="btn btn-primary" @onclick="InputName">
+        Input Name
+    </button>
+    <p>@_name</p>
+
+</div>
+
+
+@code {
+    public async void HelloWorld()
+    {
+        await JSRuntime.InvokeVoidAsync("testFunction.helloWorld", null); //반환값이 없는
+    }
+
+    string _name = "";
+    public async void InputName()
+    {
+        _name = await JSRuntime.InvokeAsync<string>("testFunction.inputName", "Input name"); //반환값이 dlTsms
+        StateHasChanged(); //UI 갱신
+    }
+}
