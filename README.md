@@ -54,4 +54,10 @@
     3) <label for="id1"/>
        <input id="id1"/> 
         label에 for 속성과 input에 id 속성을 맞춰주면 라벨을 눌렀을때 해당 input 이 선택됨
-       
+
+3. State관리
+    1) CounterState.cs를 추가하여 _count값을 유지
+    2) count페이지에서 페이지를 이동하더라도 count값을 유지
+    3) CounterState.cs에서 카운트 값을 set 할때 UI 갱신하는 Action을 추가하여 UI 갱신
+    4) @impelements 상속 기능 count페이지에 추가 함
+    5) StartUp.cs에서 의존성 주입
