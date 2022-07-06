@@ -40,6 +40,9 @@ namespace BlazorApp
             services.AddSingleton<SingletonService>(); //singleton으로 생성
             services.AddTransient<TransientService>(); //페이지 이동할때마다 새로 생성됨?
             services.AddScoped<ScopedService>(); //페이지 새로고침 하면 새로 생성됨?
+
+
+            services.AddScoped<CounterState>(); //
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

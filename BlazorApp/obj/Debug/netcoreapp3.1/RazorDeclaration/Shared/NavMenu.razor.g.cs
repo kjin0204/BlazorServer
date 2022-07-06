@@ -75,7 +75,7 @@ using BlazorApp.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase, IDisposable
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -83,7 +83,7 @@ using BlazorApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "D:\4.learn\BlazorApp\BlazorApp\Shared\NavMenu.razor"
+#line 42 "D:\4.learn\BlazorApp\BlazorApp\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 
@@ -94,9 +94,25 @@ using BlazorApp.Shared;
         collapseNavMenu = !collapseNavMenu;
     }
 
+    protected override void OnInitialized()
+    {
+        CounteState.OnStateChanged += onStatechanged;
+    }
+
+    void onStatechanged()
+    {
+        this.StateHasChanged(); //UI갱신
+    }
+
+    void IDisposable.Dispose()
+    {
+        CounteState.OnStateChanged -= onStatechanged; //창이 종료될때 Action 연결 끊음
+    }
+
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private BlazorApp.Data.CounterState CounteState { get; set; }
     }
 }
 #pragma warning restore 1591

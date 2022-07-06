@@ -1,9 +1,14 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
+﻿@inject BlazorApp.Data.CounterState CounteState;
+@implements IDisposable
+<!--implements 상속.(IDisposable 인터페이스 창이 종료될때 dispose() 실행됨 )-->
+
+<div class="top-row pl-4 navbar navbar-dark">
     <a class="navbar-brand" href="">BlazorApp</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
 </div>
+
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
@@ -30,6 +35,10 @@
     </ul>
 </div>
 
+<div>
+    <p style="color:white">counter : @CounteState.Count</p>
+</div>
+
 @code {
     private bool collapseNavMenu = true;
 
@@ -38,5 +47,20 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    protected override void OnInitialized()
+    {
+        CounteState.OnStateChanged += onStatechanged;
+    }
+
+    void onStatechanged()
+    {
+        this.StateHasChanged(); //UI갱신
+    }
+
+    void IDisposable.Dispose()
+    {
+        CounteState.OnStateChanged -= onStatechanged; //창이 종료될때 Action 연결 끊음
     }
 }
