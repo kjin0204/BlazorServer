@@ -126,4 +126,24 @@
     6) stateUp에서 ApplicationDbContext 추가.
     7) 패키지 관리 콘솔에서  add-migration, update-database 마이그레이션 정보 및 데이터 베이스 생성
 
-
+10. WebApi#2
+    1) Api 데이터 Read 기능 추가
+    2) 디비에 데이터는 강제로 3개 넣어줌.
+    3) RankingController에서 Read 기능 추가.
+        [HttpGet]<!-- 전체 리스트 조회-->
+        public List<GameResult>GetGameResults()
+        {
+            List<GameResult> results = _context.GameResults
+                                    .OrderByDescending(k => k.Score)
+                                    .ToList();
+            return results;
+        } 
+        [HttpGet("{id}")]<!-- 해당 아이디에 대한 데이터만 조회-->
+        public GameResult GetGameResults(int id)
+        {
+            GameResult result = _context.GameResults
+                                    .Where(k => k.Id == id)
+                                    .FirstOrDefault();
+            return result;
+        }
+    4) postman 설치 하여 데이터 주고 받는거 테스트 가능 아이디는 네이버 아디랑 동일하게 만듬
