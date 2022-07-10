@@ -20,6 +20,8 @@
                         <th>UserName</th>
                         <th>Score</th>
                         <th>Date</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +31,12 @@
                             <td>@gameResults.userName</td>
                             <td>@gameResults.Score</td>
                             <td>@gameResults.Date.ToString()</td>
+                            <td>
+                                <button class="btn btn-primary" @onclick="(() => UpdateGameResult(gameResults))">Update</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" @onclick="(() => DeleteGameResult(gameResults))">Delete</button>
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -39,30 +47,30 @@
             <button class="btn btn-primary" @onclick="AddGameResult">Add</button>
         </p>
 
-        @if(_showPopup)
-                {
-                    <div class="modal" style="display:block" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h3 class="modal-title">Add/Update GameResult</h3>
-                                    <button type="button" class="close" @onclick="ClosePopup">
-                                        <span area-hidden="true">X</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <label for="UserName">UserName</label>
-                                    <input class="form-control" type="text" placeholder="UserName" @bind-value="_gameResult.userName" />
-                                    <label for="Score">Score</label>
-                                    <input class="form-control" type="text" placeholder="Score" @bind-value="_gameResult.Score" />
-                                    <button class="btn btn-primary" type="button" @onclick="SaveGameResult">
-                                        Save
-                                    </button>
-                                </div>
-                            </div>
+        @if (_showPopup)
+        {
+            <div class="modal" style="display:block" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Add/Update GameResult</h3>
+                            <button type="button" class="close" @onclick="ClosePopup">
+                                <span area-hidden="true">X</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="UserName">UserName</label>
+                            <input class="form-control" type="text" placeholder="UserName" @bind-value="_gameResult.userName" />
+                            <label for="Score">Score</label>
+                            <input class="form-control" type="text" placeholder="Score" @bind-value="_gameResult.Score" />
+                            <button class="btn btn-primary" type="button" @onclick="SaveGameResult">
+                                Save
+                            </button>
                         </div>
                     </div>
-                }
+                </div>
+            </div>
+        }
 
     </Authorized>
     <NotAuthorized>
@@ -84,8 +92,22 @@
     void AddGameResult()
     {
         _showPopup = true;
-        _gameResult = new GameResult() { Id = 0  };
+        _gameResult = new GameResult() { Id = 0 };
     }
+
+    async Task UpdateGameResult(GameResult gameResult)
+    {
+        _gameResult = gameResult;
+        _showPopup = true;
+    }
+
+    async Task DeleteGameResult(GameResult gameResult)
+    {
+        var task =  RankingService.DeleteGameResult(gameResult);
+        _gameResults = await RankingService.GetGameResultsAsync(); //데이터 갱신
+    }
+
+
 
     void ClosePopup()
     {
@@ -94,7 +116,7 @@
 
     async Task SaveGameResult()
     {
-        if(_gameResult.Id == 0) //새로 생성
+        if (_gameResult.Id == 0) //새로 생성
         {
             _gameResult.Date = DateTime.Now;
             var task = RankingService.AddGameResult(_gameResult);
@@ -102,10 +124,10 @@
         }
         else //수정 작업
         {
-
+            var task = RankingService.UpdateGameResult(_gameResult);
         }
 
         _gameResults = await RankingService.GetGameResultsAsync(); //데이터 갱신
-        //_showPopup = false;
+        _showPopup = false;
     }
 }

@@ -98,7 +98,7 @@ using RankingApp.Data.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 74 "D:\4.learn\BlazorApp\RankingApp\Pages\Ranking.razor"
+#line 82 "D:\4.learn\BlazorApp\RankingApp\Pages\Ranking.razor"
        
     List<GameResult> _gameResults;
     bool _showPopup; //팡버 할지 말지 판단하는 변수
@@ -112,8 +112,22 @@ using RankingApp.Data.Services;
     void AddGameResult()
     {
         _showPopup = true;
-        _gameResult = new GameResult() { Id = 0  };
+        _gameResult = new GameResult() { Id = 0 };
     }
+
+    async Task UpdateGameResult(GameResult gameResult)
+    {
+        _gameResult = gameResult;
+        _showPopup = true;
+    }
+
+    async Task DeleteGameResult(GameResult gameResult)
+    {
+        var task =  RankingService.DeleteGameResult(gameResult);
+        _gameResults = await RankingService.GetGameResultsAsync(); //데이터 갱신
+    }
+
+
 
     void ClosePopup()
     {
@@ -122,17 +136,19 @@ using RankingApp.Data.Services;
 
     async Task SaveGameResult()
     {
-        if(_gameResult.Id == 0) //새로 생성
+        if (_gameResult.Id == 0) //새로 생성
         {
             _gameResult.Date = DateTime.Now;
             var task = RankingService.AddGameResult(_gameResult);
 
-            _gameResults = await RankingService.GetGameResultsAsync(); //데이터 갱신
         }
         else //수정 작업
         {
-
+            var task = RankingService.UpdateGameResult(_gameResult);
         }
+
+        _gameResults = await RankingService.GetGameResultsAsync(); //데이터 갱신
+        _showPopup = false;
     }
 
 #line default

@@ -108,6 +108,12 @@
             _context.SaveChanges(); //디비에 데이터 추가
             return Task.FromResult(gameResult);
 
+8. Blazor RankingApp#3
+    1) user 데이터 업데이트 기능 추가
+
+    2) user 데이터 삭제 기능 추가
+
+
 
 
 
