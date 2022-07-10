@@ -1,0 +1,10 @@
+D:\4.learn\BlazorApp\SharedData\bin\Debug\netcoreapp3.1\SharedData.deps.json
+D:\4.learn\BlazorApp\SharedData\bin\Debug\netcoreapp3.1\SharedData.dll
+D:\4.learn\BlazorApp\SharedData\bin\Debug\netcoreapp3.1\SharedData.pdb
+D:\4.learn\BlazorApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.GeneratedMSBuildEditorConfig.editorconfig
+D:\4.learn\BlazorApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.AssemblyInfoInputs.cache
+D:\4.learn\BlazorApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.AssemblyInfo.cs
+D:\4.learn\BlazorApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.csproj.CoreCompileInputs.cache
+D:\4.learn\BlazorApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.dll
+D:\4.learn\BlazorApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.pdb
+D:\4.learn\BlazorApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.csproj.AssemblyReference.cache

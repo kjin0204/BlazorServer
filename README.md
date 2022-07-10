@@ -114,6 +114,16 @@
     2) user 데이터 삭제 기능 추가
 
 
-
+9. WebApi#1
+    1) WebApi 프로젝트 생성
+    2) DB커넥션을 위해 nuget 패키지에서 해당 패키지 설치
+        A) Microsoft.EntityFrameworkCore(3.1.26)
+        B) Microsoft.EntityFrameworkCore.Design(3.1.26)
+        C) Microsoft.EntityFrameworkCore.SqlServer(3.1.26)
+    3) GameResult를 공통으로 사용 하기 위해 SharedData 프로젝트를 생성하여 GameResult.cs 생성
+    4) WebApi프로젝트에서 SharedData 참조
+    5) ApplicationDbContext.cs 생성 하여 GameResult 추가 및 ApplicationContext 설정
+    6) stateUp에서 ApplicationDbContext 추가.
+    7) 패키지 관리 콘솔에서  add-migration, update-database 마이그레이션 정보 및 데이터 베이스 생성
 
 

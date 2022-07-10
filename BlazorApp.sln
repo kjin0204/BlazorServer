@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp", "BlazorApp\Blaz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorStudy", "BlazorStudy\BlazorStudy.csproj", "{033CAFF7-71D4-475E-9DF9-CE8A1A150891}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RankingApp", "RankingApp\RankingApp.csproj", "{50B66917-7381-4B49-A3B3-C02762E90D57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RankingApp", "RankingApp\RankingApp.csproj", "{50B66917-7381-4B49-A3B3-C02762E90D57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{145983AC-D480-4693-8313-D5DB4CA6FB82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedData", "SharedData\SharedData.csproj", "{41B45309-0CF2-4738-B938-B76A5BE65066}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{50B66917-7381-4B49-A3B3-C02762E90D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50B66917-7381-4B49-A3B3-C02762E90D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50B66917-7381-4B49-A3B3-C02762E90D57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{145983AC-D480-4693-8313-D5DB4CA6FB82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{145983AC-D480-4693-8313-D5DB4CA6FB82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{145983AC-D480-4693-8313-D5DB4CA6FB82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{145983AC-D480-4693-8313-D5DB4CA6FB82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41B45309-0CF2-4738-B938-B76A5BE65066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B45309-0CF2-4738-B938-B76A5BE65066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41B45309-0CF2-4738-B938-B76A5BE65066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41B45309-0CF2-4738-B938-B76A5BE65066}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
