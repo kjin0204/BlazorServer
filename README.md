@@ -43,7 +43,6 @@
                                 <InputText class="form-control" placeholder="Summary" @bind-Value="_addForecast.Summary" />
                                 <br />
                                 <button class="btn btn-primary" type="submit">Save</button>
-
                             </EditForm>
                         </div>
                     </div>
@@ -76,7 +75,7 @@
                         Configuration.GetConnectionString("DefaultConnection")));
         DefaultConnection => appsettings.json 에 정의 되어 있으며 DB 접속정보를 가지고 옴.
     3) Migrations에 테이블 생성및 쿼리 생성관련 데이터가 생성됨
-    4) 프로젝트 새로 생성시 인증 선택을 하면 인증 관련된 설정들이 자동 생성 됨
+    4) 프로젝트 새로 생성시 인증 선택을 하면 인증 관련된 설정들이 자동 생성 됨(Entity 관련도 생성됨)
 
 6. Blazor RankingApp#2
     1) GameResult.cs Model 생성
@@ -91,6 +90,24 @@
     5) RankingService.cs 생성 하여 생성자를 생성해 Entity 모델을 디펜던시를 이용해 주입 받고
         DB에서 데이터를 가지고 오는 Read 메소드 생성, StatUp에서 디펜던시 추가
     6) Ranking.razor UI파일 생성 디비 데이터 UI로 표시
+
+7. Blazor RankingApp#3
+    1)로그인 유무 확인
+        <AuthorizeView>
+        <Authorized>
+            <!-- 로그인 완료-->
+        </Authorized>
+        <NotAuthorized>
+            <!-- 로그인 미완료-->
+        </NotAuthorized>
+    </AuthorizeView>
+    2) 유저 추가 기능 추가
+        - Ranking.razor에 팝업을 이용한 데이터 추가기능, 로그인 된 유저만 접근 가능하도록 기능 추가
+        - RankingService.cs에 디비에 데이터 Insert 하는 기능 추가
+            _context.GameResults.Add(gameResult); // 데이터 추가
+            _context.SaveChanges(); //디비에 데이터 추가
+            return Task.FromResult(gameResult);
+
 
 
 

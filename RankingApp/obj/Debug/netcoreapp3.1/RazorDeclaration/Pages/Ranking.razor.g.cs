@@ -98,14 +98,41 @@ using RankingApp.Data.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 37 "D:\4.learn\BlazorApp\RankingApp\Pages\Ranking.razor"
+#line 74 "D:\4.learn\BlazorApp\RankingApp\Pages\Ranking.razor"
        
     List<GameResult> _gameResults;
-
+    bool _showPopup; //팡버 할지 말지 판단하는 변수
+    GameResult _gameResult;
 
     protected override async Task OnInitializedAsync()
     {
         _gameResults = await RankingService.GetGameResultsAsync();
+    }
+
+    void AddGameResult()
+    {
+        _showPopup = true;
+        _gameResult = new GameResult() { Id = 0  };
+    }
+
+    void ClosePopup()
+    {
+        _showPopup = false;
+    }
+
+    async Task SaveGameResult()
+    {
+        if(_gameResult.Id == 0) //새로 생성
+        {
+            _gameResult.Date = DateTime.Now;
+            var task = RankingService.AddGameResult(_gameResult);
+
+            _gameResults = await RankingService.GetGameResultsAsync(); //데이터 갱신
+        }
+        else //수정 작업
+        {
+
+        }
     }
 
 #line default

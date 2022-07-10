@@ -15,7 +15,20 @@ namespace RankingApp.Data.Services
             _context = context;
         }
 
+        //Write
+        public Task<GameResult> AddGameResult(GameResult gameResult)
+        {
+            _context.GameResults.Add(gameResult);
+            _context.SaveChanges();
 
+            return Task.FromResult(gameResult);
+        }
+        //Update
+
+        //Delete
+
+
+        //Read
         public Task<List<GameResult>> GetGameResultsAsync()
         {
             List<GameResult> results = _context.GameResults
